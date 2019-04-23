@@ -66,8 +66,8 @@
 		     <td><%= r.getDenied() %></td>
 		     
 		     <% if (r.getApproved() != 1 && r.getDenied() != 1) { %>
-		     <td><a href="approve?reimId=<%= r.getId() %>">Approve</a></td> 
-		     <td><a href="deny?reimId=<%= r.getId() %>">Deny</a></td> 
+		     <td><a href="status?action=approve&reimid=<%= r.getId() %>">Approve</a></td> 
+		     <td><a href="status?action=deny&reimid=<%= r.getId() %>">Deny</a></td> 
 		     
 		     <%} %>    	     
 		  </tr>

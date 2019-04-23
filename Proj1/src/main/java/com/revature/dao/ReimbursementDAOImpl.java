@@ -58,7 +58,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 	public List<Reimbursement> getReimbursement() {
 		try {
 			Connection con = ConnectionUtil.getConnection(context);
-			String sql = "SELECT employee.id, employee.username, reimbursement.amount, reimbursement.details, reimbursement.pending, reimbursement.approved, reimbursement.id as rid " + 
+			String sql = "SELECT employee.id, employee.username, reimbursement.amount, reimbursement.details, reimbursement.pending, reimbursement.approved, reimbursement.denied, reimbursement.id as rid " + 
 					"FROM reimbursement " + 
 					"INNER JOIN employee ON reimbursement.employeeid = employee.id ";
 			PreparedStatement ps;
@@ -89,6 +89,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 		reim.setDetails(rs.getString("DETAILS"));
 		reim.setPending(rs.getInt("PENDING"));
 		reim.setApproved(rs.getInt("APPROVED"));
+		reim.setDenied(rs.getInt("DENIED"));
 		reim.setId(rs.getInt("RID"));
 		return reim;	
 	}
@@ -97,7 +98,7 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 	public List<Reimbursement> getByEmployeeId(int id) {
 		try {
 			Connection con = ConnectionUtil.getConnection(context);
-			String sql = "SELECT employee.id, employee.username, reimbursement.amount, reimbursement.details, reimbursement.pending, reimbursement.approved " + 
+			String sql = "SELECT employee.id, employee.username, reimbursement.amount, reimbursement.details, reimbursement.pending, reimbursement.approved, reimbursement.denied, reimbursement.id as rid " + 
 					"FROM reimbursement " + 
 					"INNER JOIN employee ON reimbursement.employeeid = employee.id "+
 					"WHERE employee.id = ?";
@@ -116,5 +117,32 @@ public class ReimbursementDAOImpl implements ReimbursementDAO {
 			e.printStackTrace();
 			return null;
 		}	}
+
+
+
+
+	@Override
+	public void updateReimbursement(Reimbursement reim) {
+		Connection con = null;
+		try {
+			con = ConnectionUtil.getConnection(context);
+			String sql = "UPDATE REIMBURSEMENT " + 
+						 "SET PENDING = ?, APPROVED = ?, DENIED = ? " + 
+						 "WHERE ID = ? ";
+			PreparedStatement ps;
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, reim.getPending());
+			ps.setInt(2, reim.getApproved());
+			ps.setInt(3, reim.getDenied());
+			ps.setInt(4, reim.getId());
+			ps.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (con != null) {
+				tryToClose(con);
+			}
+		}
+	}
 
 }

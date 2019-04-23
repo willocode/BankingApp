@@ -38,14 +38,15 @@
 		    
 		     
 		 </tr>
-		 <%for (Reimbursement r: reimb) { %>
+		 <%for (Reimbursement r : reimb) { %>
 		  <tr>
 		     <td><%= r.getEmployee().getId() %></td>
 		     <td><%= r.getEmployee().getUsername() %></td>
 		     <td><%= r.getAmount() %></td>
 		     <td><%= r.getDetails() %></td>
 		     <td><%= r.getPending() %></td>
-		     <td><%= r.getApproved() %></td>     	     
+		     <td><%= r.getApproved() %></td> 
+		         	     
 		  </tr>
 		  <% } %>
 		</table>	

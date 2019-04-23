@@ -6,6 +6,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.revature.beans.Reimbursement;
+import com.revature.dao.ReimbursementDAO;
+import com.revature.dao.ReimbursementDAOImpl;
+
 /**
  * Servlet implementation class StatusServlet
  */
@@ -24,8 +28,25 @@ public class StatusServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		Reimbursement re = new Reimbursement();
+		ReimbursementDAO rdao = new ReimbursementDAOImpl(getServletContext());
+		String action = request.getParameter("action");
+		int reimid = Integer.parseInt(request.getParameter("reimid"));
+		if(action.equals("approve")) {
+			re.setPending(0);
+			re.setDenied(0);
+			re.setApproved(1);
+			re.setId(reimid);
+			rdao.updateReimbursement(re);
+		} else if(action.equals("deny")) {
+			re.setPending(0);
+			re.setDenied(1);
+			re.setApproved(0);
+			re.setId(reimid);
+			rdao.updateReimbursement(re);
+
+		}
+		response.sendRedirect("manager");	
 	}
 
 	/**

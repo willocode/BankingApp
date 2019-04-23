@@ -11,6 +11,8 @@ public interface ReimbursementDAO {
 	List<Reimbursement> getByEmployeeId(int id);
 	
 	public void newReimbursement(Reimbursement reimburse);
+	
+	public void updateReimbursement(Reimbursement reim);
 
 
 }
