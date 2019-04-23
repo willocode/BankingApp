@@ -1,0 +1,46 @@
+.td {
+	text-align: center;
+}
+
+.list {
+	display: flex;
+    justify-content: center;
+    border: solid, black;
+}
+
+.empreim{
+	text-align: center;
+}
+
+.empform{
+	display: flex;
+    justify-content: center;
+}
+
+.container {
+	margin-top: 100px;
+}
+
+.btn-default {
+	text-align: center;
+}
+
+input{
+	text-align:center;
+}
+
+#form{
+	display: inline-block;
+}
+
+.h2login{
+	text-align: center;
+}
+
+.loginform{
+	text-align: center;
+}
+
+label{
+	font-size: 25px;
+}
