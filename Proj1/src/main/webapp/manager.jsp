@@ -82,7 +82,31 @@
 		  <% } %>
 		</table>	
 	</div> 
-	
+	<br>
+	<br>
+	<br>
+	<div class="container">
+	  <h2 class="h2login">Employee Login</h2>
+	  <form class="loginform" action="newemployee" method="POST">
+	    <div class="form-group">
+	      <label for="user"></label>
+	      <input id="form" style="width: 40%;" type="text" class="form-control" id="user" placeholder="Enter username" name="user">
+	    </div>
+	    <div class="form-group">
+	      <label for="pass"></label>
+	      <input id="form" style="width: 40%;" type="password" class="form-control" id="pass" placeholder="Enter password" name="pass">
+	    </div>
+	    <div class="form-group">
+	      <label for="title"></label>
+	      <input id="form" style="width: 40%;" type="text" class="form-control" id="title" placeholder="Enter title" name="title">
+	    </div>
+	    <div class="form-group">
+	      <label for="manager"></label>
+	      <input id="form" style="width: 40%;" type="text" class="form-control" id="manager" placeholder="Enter managerid" name="manager">
+	    </div>
+	    <button type="submit" class="btn btn-default">Submit</button>
+	  </form>
+	</div>
 	
 
 

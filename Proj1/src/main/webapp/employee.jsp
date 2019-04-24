@@ -16,18 +16,18 @@
 		<% Employee empl = (Employee)request.getSession().getAttribute("username");%>
 		<%  if (empl != null) { %>
 		<h3> Welcome <%= empl.getUsername() %>!</h3>
+		<h3> Your manager is <%= empl.getManagerId() %>(venus)</h3>
 		<%
 		   } else {
 		%>
 		<h3> Please Login</h3>
 		<% } %>
-	
-	
+
   		<a href="logout">logout</a>
   	</div>
 	<br>
 	<br>
-	
+	<br>
 	<div class="list">
 		<% List<Reimbursement> reimb = (List<Reimbursement>)request.getAttribute("reimbursementList");%>
 		<table style="width:50%">
@@ -56,27 +56,24 @@
 		         	     
 		  </tr>
 		  <% } %>
-		</table>	
+		</table>
+			
 	</div> 
-	
-	
-	
+	<br>
+	<br>
 <div class="container">
   <h2 class="h2login">Employee Reimbursement</h2>
   <form class="loginform" action="reimbursement" method="POST">
     <div class="form-group">
       <label for="amount"></label>
-      <input type="text" class="form-control" id="amount" placeholder="Enter amount" name="amount">
+      <input style="font-size:20px;" type="text" class="form-control" id="amount" placeholder="Enter amount" name="amount">
     </div>
     <div class="form-group">
       <label for="details"></label>
-      <input type="text" class="form-control" id="details" placeholder="Enter details" name="details">
+      <input style="font-size:20px;" type="text" class="form-control" id="details" placeholder="Enter details" name="details">
     </div>
-    <button type="submit" class="btn btn-default">Submit</button>
+    <button style="font-size:15px;" type="submit" class="btn btn-default">Submit</button>
   </form>
-</div>
-
-	
-		
+</div>		
 </body>
 </html>

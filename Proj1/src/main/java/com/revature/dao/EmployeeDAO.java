@@ -3,6 +3,7 @@ package com.revature.dao;
 import java.util.List;
 
 import com.revature.beans.Employee;
+import com.revature.beans.Reimbursement;
 
 public interface EmployeeDAO {
 
@@ -13,6 +14,9 @@ public interface EmployeeDAO {
 	public void viewInfo(int id);
 	
 	public Employee getByUsername(String username);
+	
+	public void newEmployee(Employee employee);
+
 	
 	
 

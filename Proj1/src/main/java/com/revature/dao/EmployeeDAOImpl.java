@@ -23,6 +23,14 @@ public class EmployeeDAOImpl implements EmployeeDAO {
         this.context = context;
     }
 	
+	public void tryToClose(Connection con) {
+		try {
+			con.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 
 	
 	
@@ -111,6 +119,33 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			return null;
 		}	
 		
+	}
+
+
+
+
+	@Override
+	public void newEmployee(Employee employee) {
+		Connection con = null;
+		try {
+			con = ConnectionUtil.getConnection(context);
+			String sql = "INSERT INTO " + 
+						 "EMPLOYEE(USERNAME, PASSWORD, TITLE, MANAGERID) " + 
+						 "VALUES(?, ?, ?, ?) ";
+			PreparedStatement ps;
+			ps = con.prepareStatement(sql);
+			ps.setString(1, employee.getUsername());
+			ps.setString(2, employee.getPassword());
+			ps.setString(3, employee.getTitle());
+			ps.setInt(4, employee.getManagerId());
+			ps.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (con != null) {
+				tryToClose(con);
+			}
+		}
 	}
 
 }
