@@ -7,12 +7,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="styles/proj1.css">
 
 <meta charset="UTF-8">
 <title>Manager Console</title>
 </head>
 <body>
+
+<div style="background:#FBF8F8;">
 <div>
 <% Employee empl = (Employee)request.getSession().getAttribute("username");%>
 	<%  if (empl != null) { %>
@@ -26,7 +29,8 @@
 	
 		<a href="logout">logout</a>
 	</div>
-	
+	</div>
+	<div style="background:#FBF8F8; width: 60vw; display: block; margin: auto;">
 	<h2 class="h2login">All Employees</h2>
 	<div class="list">
 		<% List<Employee> empllist = (List<Employee>)request.getAttribute("employeeList");%>
@@ -46,13 +50,15 @@
 		  </tr>
 		  <% } %>
 		</table>	
+	</div>
 	</div> 
 	<br>
 	<br>
 	<h2 class="h2login">Manage Employee Reimbursements</h2>
+	<div style="background:#FBF8F8; width: 60vw; display: block; margin: auto;">
 	<div class="list">
 		<% List<Reimbursement> reimb = (List<Reimbursement>)request.getAttribute("reimbursementList");%>
-		<table style="width:50%">
+		<table style="width:80%">
 		 <tr> 
 		 	<th>Employee id</th>
 		    <th>Employee Username</th> 
@@ -82,33 +88,41 @@
 		  <% } %>
 		</table>	
 	</div> 
+	</div>
 	<br>
 	<br>
-	<br>
+	<div style="background:#FBF8F8; width: 60vw; height:30vh; display: block; margin: auto;">
 	<div class="container">
-	  <h2 class="h2login">Employee Login</h2>
+	  <h2 class="h2login">New Hire Information</h2>
 	  <form class="loginform" action="newemployee" method="POST">
 	    <div class="form-group">
 	      <label for="user"></label>
-	      <input id="form" style="width: 40%;" type="text" class="form-control" id="user" placeholder="Enter username" name="user">
+	      <input id="form" style="width: 20%; font-size: 15px;" type="text" class="form-control" id="user" placeholder="Enter username" name="user">
 	    </div>
 	    <div class="form-group">
 	      <label for="pass"></label>
-	      <input id="form" style="width: 40%;" type="password" class="form-control" id="pass" placeholder="Enter password" name="pass">
+	      <input id="form" style="width: 20%; font-size: 15px;" type="password" class="form-control" id="pass" placeholder="Enter password" name="pass">
 	    </div>
 	    <div class="form-group">
 	      <label for="title"></label>
-	      <input id="form" style="width: 40%;" type="text" class="form-control" id="title" placeholder="Enter title" name="title">
+	      <input id="form" style="width: 20%; font-size: 15px;" type="text" class="form-control" id="title" placeholder="Enter title" name="title">
 	    </div>
 	    <div class="form-group">
 	      <label for="manager"></label>
-	      <input id="form" style="width: 40%;" type="text" class="form-control" id="manager" placeholder="Enter managerid" name="manager">
+	      <input id="form" style="width: 20%; font-size: 15px;" type="text" class="form-control" id="manager" placeholder="Enter managerid" name="manager">
 	    </div>
-	    <button type="submit" class="btn btn-default">Submit</button>
+	    <button style="font-size: 15px; margin: 10px;" type="submit" class="btn btn-default">Submit</button>
 	  </form>
 	</div>
-	
-
-
+	</div>
+	<br>
+	<br>
+	<br>
 </body>
+
+<footer style="margin: 40px; text-align: center;" class="templateux-footer">
+ <div class="col-md-6 text-md-right text-center footer-social">
+    <a href="https://github.com/willobot" target="_blank" class="p-3"><span class="fa fa-github fa-3x"></span></a>
+ </div>
+</footer>
 </html>

@@ -15,7 +15,7 @@
 
 <% String message = (String)request.getAttribute("successMessage");  %>
 	<%  if (message != null) { %>
-	<h3> <%= message %>!</h3>
+	<h3 style="margin: 20px;"> <%= message %>!</h3>
 	<%
 	   } else {
 	%>
@@ -35,6 +35,5 @@
     <button type="submit" class="btn btn-default">Submit</button>
   </form>
 </div>
-
 </body>
 </html>

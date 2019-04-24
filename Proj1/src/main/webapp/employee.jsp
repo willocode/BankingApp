@@ -7,16 +7,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="styles/proj1.css">
 <meta charset="UTF-8">
 <title>Welcome</title>
 </head>
 <body>
+	<div style="background:#FBF8F8;">
 	<div>
 		<% Employee empl = (Employee)request.getSession().getAttribute("username");%>
 		<%  if (empl != null) { %>
-		<h3> Welcome <%= empl.getUsername() %>!</h3>
-		<h3> Your manager is <%= empl.getManagerId() %>(venus)</h3>
+		<h2> Welcome <%= empl.getUsername() %>!</h2>
+		<h4> Your manager is <%= empl.getManagerId() %>(venus)</h4>
 		<%
 		   } else {
 		%>
@@ -25,12 +27,15 @@
 
   		<a href="logout">logout</a>
   	</div>
+  	</div>
 	<br>
 	<br>
 	<br>
+	<h2 style="text-align:center;">Your Reimbursements</h2>
+	<div style="background:#FBF8F8; width: 80vw; display: block; margin: auto;">
 	<div class="list">
 		<% List<Reimbursement> reimb = (List<Reimbursement>)request.getAttribute("reimbursementList");%>
-		<table style="width:50%">
+		<table style="width:60%">
 		 <tr> 
 		 	<th>Employee id</th>
 		    <th>Employee Username</th> 
@@ -58,9 +63,11 @@
 		  <% } %>
 		</table>
 			
+	</div>
 	</div> 
 	<br>
 	<br>
+<div style="background:#FBF8F8; height:20vh; width: 60vw; display: block; margin: auto;">
 <div class="container">
   <h2 class="h2login">Employee Reimbursement</h2>
   <form class="loginform" action="reimbursement" method="POST">
@@ -72,8 +79,17 @@
       <label for="details"></label>
       <input style="font-size:20px;" type="text" class="form-control" id="details" placeholder="Enter details" name="details">
     </div>
-    <button style="font-size:15px;" type="submit" class="btn btn-default">Submit</button>
+    <button style="font-size:15px; margin: 10px;" type="submit" class="btn btn-default">Submit</button>
   </form>
-</div>		
+</div>	
+</div>	
+<br>
+<br>
 </body>
+
+<footer style="margin: 40px; text-align: center;" class="templateux-footer">
+ <div class="col-md-6 text-md-right text-center footer-social">
+    <a href="https://github.com/willobot" target="_blank" class="p-3"><span class="fa fa-github fa-3x"></span></a>
+ </div>
+</footer>
 </html>
