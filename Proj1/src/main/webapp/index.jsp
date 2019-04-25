@@ -1,5 +1,5 @@
 <html>
 <body>
-<h2>Hello World!</h2>
+<h2>check sql.txt file for database layout</h2>
 </body>
 </html>

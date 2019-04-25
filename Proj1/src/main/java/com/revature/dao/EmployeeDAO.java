@@ -16,6 +16,8 @@ public interface EmployeeDAO {
 	public Employee getByUsername(String username);
 	
 	public void newEmployee(Employee employee);
+	
+	public void updateEmployee(Employee emp);
 
 	
 	

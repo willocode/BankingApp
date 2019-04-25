@@ -85,6 +85,34 @@
 </div>	
 <br>
 <br>
+
+<div style="background:#FBF8F8; height:20vh; width: 60vw; display: block; margin: auto;">
+<div class="container">
+  <h2 class="h2login">Update employee</h2>
+  <form class="loginform" action="updateuser" method="POST">
+    <div class="form-group">
+      <label for="username"></label>
+      <input style="font-size:20px;" type="text" class="form-control" id="username" placeholder="Enter new username" name="username">
+    </div>
+    <div class="form-group">
+      <label for="password"></label>
+      <input style="font-size:20px;" type="password" class="form-control" id="password" placeholder="Enter new password" name="password">
+    </div>
+    <div class="form-group">
+      <label for="title"></label>
+      <input style="font-size:20px;" type="text" class="form-control" id="title" placeholder="Enter title" name="title">
+    </div>
+    <!-- <div class="form-group">
+      <label for="managerid"></label>
+      <input style="font-size:20px;" type="text" class="form-control" id="managerid" placeholder="Enter manager id" name="manager">
+    </div> -->
+    <button style="font-size:15px; margin: 10px;" type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>	
+</div>
+<br>
+<br>
+<br>	
 </body>
 
 <footer style="margin: 40px; text-align: center;" class="templateux-footer">

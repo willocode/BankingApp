@@ -148,6 +148,32 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 		}
 	}
 
+	@Override
+	public void updateEmployee(Employee emp) {
+		Connection con = null;
+		try {
+			con = ConnectionUtil.getConnection(context);
+			String sql = "UPDATE EMPLOYEE " + 
+						 "SET USERNAME = ?, PASSWORD = ?, TITLE = ? " + 
+						 "WHERE ID = ? ";
+			PreparedStatement ps;
+			ps = con.prepareStatement(sql);
+			ps.setString(1, emp.getUsername());
+			ps.setString(2, emp.getPassword());
+			ps.setString(3, emp.getTitle());
+			ps.setInt(4, emp.getId());
+
+			ps.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			if (con != null) {
+				tryToClose(con);
+			}
+		}
+		
+	}
+
 }
 
 
