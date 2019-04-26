@@ -1,0 +1,89 @@
+CREATE TABLE EMPLOYEE (
+	ID INTEGER PRIMARY KEY,
+	USERNAME VARCHAR2(200) NOT NULL,
+	PASSWORD VARCHAR2(200) NOT NULL,
+	TITLE VARCHAR2(200) DEFAULT 'coffee and donut getter',
+	MANAGERID INTEGER
+);
+
+
+select * from reimbursement;
+
+SELECT e1.id, e1.username, e1.title, e2.username
+FROM employee e1
+LEFT JOIN employee e2 ON e1.managerId = e2.id;
+
+SELECT employee.id, employee.username, reimbursement.amount, reimbursement.details
+FROM reimbursement
+INNER JOIN employee ON reimbursement.employeeid = employee.ID where pending = 1;
+
+SELECT employee.id, employee.username, reimbursement.amount, reimbursement.details
+FROM reimbursement
+INNER JOIN employee ON reimbursement.employeeid = employee.ID where approved = 1;
+
+SELECT employee.id, employee.username, reimbursement.amount, reimbursement.details
+FROM reimbursement
+INNER JOIN employee ON reimbursement.employeeid = employee.ID where denied = 1;
+
+select * from v$session;
+
+
+select user from dual;
+
+select * from employee;
+
+insert into employee
+values(200, 'joe', 'schmo', 'coffee runner', 300);
+
+
+
+CREATE TABLE REIMBURSEMENT (
+	ID INTEGER PRIMARY KEY,
+	AMOUNT NUMBER(8,2) NOT NULL,
+    IMAGE BLOB,
+    DETAILS VARCHAR2(200),
+	PENDING NUMBER DEFAULT 1,
+	RESOLVED NUMBER DEFAULT 0,
+	APPROVED NUMBER DEFAULT 0,
+	DENIED NUMBER DEFAULT 0,
+	EMPLOYEEID INTEGER NOT NULL
+);
+
+
+ALTER TABLE REIMBURSEMENT
+ADD CONSTRAINT FK_EMPLOYEEID
+FOREIGN KEY (EMPLOYEEID) REFERENCES EMPLOYEE(ID);
+/
+
+DROP SEQUENCE SQ_EMPLOYEE_PK ;
+DROP SEQUENCE SQ_REIMBURSEMENT_PK ;
+
+
+
+CREATE SEQUENCE SQ_EMPLOYEE_PK
+START WITH 1
+INCREMENT BY 1;
+/
+
+CREATE SEQUENCE SQ_REIMBURSEMENT_PK
+START WITH 1
+INCREMENT BY 1;
+/
+
+
+CREATE OR REPLACE TRIGGER TR_INSERT_EMPLOYEE
+BEFORE INSERT ON EMPLOYEE
+FOR EACH ROW
+BEGIN
+    SELECT SQ_EMPLOYEE_PK.NEXTVAL INTO :NEW.ID FROM DUAL;
+END;
+/
+
+
+CREATE OR REPLACE TRIGGER TR_INSERT_REIMBURSEMENT
+BEFORE INSERT ON REIMBURSEMENT
+FOR EACH ROW
+BEGIN
+    SELECT SQ_REIMBURSEMENT_PK.NEXTVAL INTO :NEW.ID FROM DUAL;
+END;
+/
