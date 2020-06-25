@@ -21,6 +21,7 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+<<<<<<< HEAD
 /.metadata/
 /.metadata/
 
@@ -134,3 +135,5 @@ testem.log
 # Ignore all text files and properties file
 *.txt
 *.properties
+=======
+>>>>>>> d44a52bcccb263efd6cb1f287d7987f3636defd3
