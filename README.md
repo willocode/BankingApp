@@ -1,6 +1,4 @@
-# OlesonW_proj1
-# BankingApp
-
+under file proj1
 • Manually created database using PL/SQL.
 • Implemented methods and routing using Servlets.
 • Designed the project using the DAO pattern.
